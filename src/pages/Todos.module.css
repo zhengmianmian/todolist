@@ -1,0 +1,10 @@
+.flexContainer {
+  display: flex;
+  height: 80dvh;
+  width: 100%;
+  justify-content: center;
+}
+
+.flexContainer div {
+  margin: 20px;
+}

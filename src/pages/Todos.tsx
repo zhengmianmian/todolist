@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Todo } from '../types';
 import TodoItem from '../components/TodoItem';
-
+import styles from './Todos.module.css';
 const things: Todo[] = [
   {
     title: 'swim',
@@ -21,17 +21,34 @@ const Todos: React.FC = () => {
   const [title, setTitle] = useState<string>('new todo');
   const [done, setDone] = useState<boolean>(false);
   const [todos, setTodos] = useState<Todo[]>(things);
-  const todolist = todos.map((todo) => <TodoItem todo={todo} />);
+  const deleteTodo = (index: number) => {
+    setTodos(todos.filter((_, i) => i !== index));
+  };
+  const toggleDone = (index: number) => {
+    const newTodos = todos.map((todo, i) =>
+      i === index ? { ...todo, done: !todo.done } : todo
+    );
+    setTodos(newTodos);
+  };
+
+  const todolist = todos.map((todo, index) => (
+    <TodoItem
+      todo={todo}
+      onDelete={() => deleteTodo(index)}
+      onToggleDone={() => toggleDone(index)}
+    />
+  ));
   const handleAdd = () => {
     let newTodos = todos.map((todo) => todo);
     newTodos.push({ title: title, done: done });
     setTodos(newTodos);
     setTitle('');
   };
+
   return (
     <div>
-      <h1>Todolist</h1>
-      <div>
+      <h1 style={{ textAlign: 'center' }}>Todolist</h1>
+      <div className={styles.flexContainer}>
         <div>{todolist}</div>
         <div>
           <h2>add a new todoitem</h2>

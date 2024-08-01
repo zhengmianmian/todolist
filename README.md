@@ -4,7 +4,7 @@ This project uses typescript.
 
 ## Available Scripts
 
-In the project directory, you can run:
+In the root directory, you can run:
 
 ### `npm start`
 
@@ -33,4 +33,4 @@ See the section about [deployment](https://facebook.github.io/create-react-app/d
 
 ### `npm i --save-dev prettier`
 
-Add .prettierrc and .prettierignore
+Add `.prettierrc` and `.prettierignore`
