@@ -42,8 +42,7 @@ const Todos: React.FC = () => {
     />
   ));
   const handleAdd = () => {
-    let newTodos = todos.map((todo) => todo);
-    newTodos.push({ title: title, done: done });
+    let newTodos = [...todos, { title: title, done: done }];
     setTodos(newTodos);
     setTitle('');
   };
