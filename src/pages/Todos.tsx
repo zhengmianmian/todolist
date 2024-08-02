@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { Todo } from '../types';
 import TodoItem from '../components/TodoItem';
 import styles from './Todos.module.css';
+import { v4 as uuidv4 } from 'uuid';
+
 const things: Todo[] = [
   {
     title: 'swim',
@@ -33,6 +35,7 @@ const Todos: React.FC = () => {
 
   const todolist = todos.map((todo, index) => (
     <TodoItem
+      key={uuidv4()}
       todo={todo}
       onDelete={() => deleteTodo(index)}
       onToggleDone={() => toggleDone(index)}
@@ -53,7 +56,8 @@ const Todos: React.FC = () => {
         <div>
           <h2>add a new todoitem</h2>
           <div>
-            <label>title: </label>
+            <label>Title: </label>
+            <br />
             <input
               placeholder="title"
               value={title}
@@ -61,9 +65,8 @@ const Todos: React.FC = () => {
             />
           </div>
           <div>
-            <label>done</label>
-          </div>
-          <div>
+            <label>Done?</label>
+            <br />
             <input
               type="radio"
               id="False"
@@ -72,8 +75,7 @@ const Todos: React.FC = () => {
               onChange={(e) => setDone(false)}
             />
             <label>False</label>
-          </div>
-          <div>
+            <br />
             <input
               type="radio"
               id="True"
@@ -84,7 +86,9 @@ const Todos: React.FC = () => {
             <label>True</label>
           </div>
           <div>
-            <button onClick={handleAdd}>add</button>
+            <button type="button" onClick={handleAdd}>
+              add
+            </button>
           </div>
         </div>
       </div>

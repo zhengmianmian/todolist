@@ -5,6 +5,13 @@
   justify-content: center;
 }
 
+@media screen and (max-width: 600px) {
+  .flexContainer {
+    align-items: center;
+    flex-direction: column;
+  }
+}
+
 .flexContainer div {
   margin: 20px;
 }
